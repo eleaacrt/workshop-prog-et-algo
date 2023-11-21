@@ -26,5 +26,5 @@ int main()
     // glitch(logo);
     // fractale();
     vortex(logo);
-    vortexN(logo);
+    // vortexN(logo);
 }
