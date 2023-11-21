@@ -18,3 +18,4 @@ void rosace();
 void mosaique(sil::Image image);
 void mosaique_inverted(sil::Image image);
 void glitch(sil::Image image);
+void fractale();

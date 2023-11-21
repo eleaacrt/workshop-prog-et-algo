@@ -32,5 +32,5 @@ void glitch(sil::Image image)
         rectangles -= 1;
     }
 
-    image.save("output/rect.png");
+    image.save("output/glitch.png");
 }

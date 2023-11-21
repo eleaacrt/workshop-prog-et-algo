@@ -23,4 +23,5 @@ int main()
     mosaique(logo);
     mosaique_inverted(logo);
     glitch(logo);
+    fractale();
 }
