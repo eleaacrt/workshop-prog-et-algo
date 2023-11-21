@@ -20,3 +20,4 @@ void mosaique_inverted(sil::Image image);
 void glitch(sil::Image image);
 void fractale();
 void vortex(sil::Image image);
+void vortexN(sil::Image image);
