@@ -1,5 +1,6 @@
 #include <sil/sil.hpp>
 #include <iostream>
+
 #include "headers.hpp"
 
 int main()
@@ -25,4 +26,5 @@ int main()
     // glitch(logo);
     // fractale();
     vortex(logo);
+    vortexN(logo);
 }
