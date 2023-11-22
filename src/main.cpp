@@ -7,6 +7,7 @@ int main()
 {
     sil::Image logo{"images/logo.png"};
     sil::Image photo{"images/photo.jpg"};
+    sil::Image photo_faible_contraste{"images/photo_faible_contraste.jpg"};
 
     // green(logo);
     // swap(logo);
@@ -26,5 +27,6 @@ int main()
     // glitch(logo);
     // fractale();
     // vortex(logo);
-    dithering(photo);
+    // dithering(photo);
+    normalisation(photo_faible_contraste);
 }

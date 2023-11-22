@@ -21,4 +21,4 @@ void glitch(sil::Image image);
 void fractale();
 void vortex(sil::Image image);
 void dithering(sil::Image image);
-// void vortexN(sil::Image image);
+void normalisation(sil::Image image);
