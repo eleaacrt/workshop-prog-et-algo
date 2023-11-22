@@ -1,11 +1,16 @@
 #include <sil/sil.hpp>
 #include <iostream>
 
-void convolution(sil::Image image)
+void outline(sil::Image image)
 {
-    sil::Image convolution(image.width(), image.height());
+    sil::Image outline(image.width(), image.height());
 
-    int kernel{50};
+    const int kernel_n{3};
+    float kernel[][kernel_n] = {
+        {-1, -1, -1},
+        {-1, 8, -1},
+        {-1, -1, -1},
+    };
 
     for (int x{0}; x < image.width(); x++)
     {
@@ -14,25 +19,22 @@ void convolution(sil::Image image)
             float count{0.f};
             glm::vec3 sum{0.f, 0.f, 0.f};
 
-            for (int i{-kernel}; i <= kernel; i++)
+            for (int i{0}; i < kernel_n; i++)
             {
-                for (int j{-kernel}; j <= kernel; j++)
+                for (int j{0}; j < kernel_n; j++)
                 {
                     if ((x + i) >= image.width() || (x + i) <= 0 || (y + j) >= image.height() || (y + j) <= 0)
                     {
-                        count += 1;
                     }
                     else
                     {
-                        sum += image.pixel((x + i), (y + j));
-                        count += 1;
+                        sum += image.pixel((x + i), (y + j)) * kernel[i][j];
                     }
                 }
             }
-            glm::vec3 moy{sum / count};
-            convolution.pixel(x, y) = moy;
+            outline.pixel(x, y) = sum;
         }
     }
 
-    convolution.save("output/convolution.png");
+    outline.save("output/outline.png");
 }
