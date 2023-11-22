@@ -28,5 +28,6 @@ int main()
     // fractale();
     // vortex(logo);
     // dithering(photo);
-    normalisation(photo_faible_contraste);
+    // normalisation(photo_faible_contraste);
+    convolution(logo);
 }

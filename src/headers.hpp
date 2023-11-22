@@ -22,3 +22,4 @@ void fractale();
 void vortex(sil::Image image);
 void dithering(sil::Image image);
 void normalisation(sil::Image image);
+void convolution(sil::Image image);
