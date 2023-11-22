@@ -23,3 +23,10 @@ void vortex(sil::Image image);
 void dithering(sil::Image image);
 void normalisation(sil::Image image);
 void convolution(sil::Image image);
+void emboss(sil::Image image);
+void outline(sil::Image image);
+void sharpen(sil::Image image);
+void gaussiens(sil::Image image);
+void diff_gaussien(sil::Image image, sil::Image image2);
+
+void convolution(sil::Image image);
