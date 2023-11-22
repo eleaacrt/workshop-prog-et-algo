@@ -19,26 +19,22 @@ void dithering(sil::Image image)
     {
         for (int sx = 0; sx < dithering.width(); sx++)
         {
-            dithering.pixel(sx, sy) = image.pixel(sx, sy);
-        }
-    }
-
-    for (int sy = 0; sy < dithering.height(); sy++)
-    {
-        for (int sx = 0; sx < dithering.width(); sx++)
-        {
             int color_result = 0;
+
             float bayer_value = bayer_matrix_4x4[sy % bayer_n][sx % bayer_n];
-            float output_color = ((dithering.pixel(sx, sy).r + dithering.pixel(sx, sy).g + dithering.pixel(sx, sy).b) / 3) + (bayer_value);
-            // Color screen blue to white
-            if (output_color < (((dithering.pixel(sx, sy).r + (dithering.pixel(sx, sy).g + (dithering.pixel(sx, sy).b)) / 3) / 2)))
+
+            float output_color = ((image.pixel(sx, sy).r + image.pixel(sx, sy).g + image.pixel(sx, sy).b) / 3) + (bayer_value);
+
+            if ((1.f / 2) < output_color)
             {
                 color_result = 1;
             }
+
             dithering.pixel(sx, sy).r = color_result;
             dithering.pixel(sx, sy).g = color_result;
             dithering.pixel(sx, sy).b = color_result;
         }
     }
+
     dithering.save("output/dithering.png");
 }
