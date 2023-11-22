@@ -25,6 +25,6 @@ int main()
     // mosaique_inverted(logo);
     // glitch(logo);
     // fractale();
-    vortex(logo);
-    // vortexN(logo);
+    // vortex(logo);
+    dithering(photo);
 }
