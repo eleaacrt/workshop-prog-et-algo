@@ -30,7 +30,7 @@ int main()
     // vortex(logo);
     // dithering(photo);
     // // normalisation(photo);
-    convolution(logo);
+    // convolution(logo);
     // convolution(logo);
     // emboss(logo);
     // outline(logo);

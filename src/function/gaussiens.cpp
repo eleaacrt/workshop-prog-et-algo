@@ -19,7 +19,7 @@ void gaussiens(sil::Image image)
             {
                 for (int j{-kernel}; j <= kernel; j++)
                 {
-                    if ((x + i) >= image.width() || (x + i) <= 0 || (y + j) >= image.height() || (y + j) <= 0)
+                    if ((x + i) >= image.width() || (x + i) <= 0 || (y + j) >= image.height() || (y + j) <= 0.5)
                     {
                         count += 1;
                     }
@@ -35,7 +35,7 @@ void gaussiens(sil::Image image)
         }
     }
 
-    kernel = 5;
+    kernel = 10;
 
     for (int x{0}; x < image.width(); x++)
     {
