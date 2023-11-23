@@ -28,5 +28,7 @@ void outline(sil::Image image);
 void sharpen(sil::Image image);
 void gaussiens(sil::Image image);
 void diff_gaussien(sil::Image image, sil::Image image2);
-void convolution(sil::Image image);
 void tri(sil::Image image);
+void kuwahara(sil::Image image);
+
+

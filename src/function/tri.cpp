@@ -1,6 +1,7 @@
 #include <sil/sil.hpp>
 #include <iostream>
 #include "../../lib/random.hpp"
+#include <algorithm>
 
 float brightness(glm::vec3 color)
 {

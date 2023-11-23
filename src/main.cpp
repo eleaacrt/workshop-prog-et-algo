@@ -38,4 +38,5 @@ int main()
     // gaussiens(photo);
     // diff_gaussien(flou_faible, flou_fort);
     tri(logo);
+    // kuwahara(photo);
 }
