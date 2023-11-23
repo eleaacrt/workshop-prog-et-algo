@@ -29,12 +29,13 @@ int main()
     // fractale();
     // vortex(logo);
     // dithering(photo);
-    // // normalisation(photo);
+    // normalisation(photo);
     // convolution(logo);
     // convolution(logo);
     // emboss(logo);
     // outline(logo);
     // sharpen(logo);
     // gaussiens(photo);
-    diff_gaussien(flou_faible, flou_fort);
+    // diff_gaussien(flou_faible, flou_fort);
+    tri(logo);
 }
