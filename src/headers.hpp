@@ -7,6 +7,8 @@ void bw(sil::Image image);
 void cercle();
 void convolution(sil::Image image);
 void diff_gaussien(sil::Image image, sil::Image image2);
+void diamond_square_patoutafait();
+void diamond_square();
 void disque();
 void dithering(sil::Image image);
 void emboss(sil::Image image);
