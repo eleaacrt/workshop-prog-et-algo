@@ -9,7 +9,7 @@ void kmeans(sil::Image image)
     sil::Image kmeans(image.width(), image.height());
 
     // c'est le nombre de couleurs que je veux à la fin
-    int nb_colors{2};
+    int nb_colors{16};
 
     // les pixels centroides qui serviront de première reférence
     std::vector<glm::vec3> px_centro{};
@@ -24,12 +24,18 @@ void kmeans(sil::Image image)
     for (float i{0}; i < nb_colors; i++)
     {
         px_centro.push_back(image.pixel(random_int(0, image.width()), random_int(0, image.height())));
-        count.push_back(0.f);
-        moy = px_centro;
     }
+    moy.resize(px_centro.size());
+    count.resize(px_centro.size());
 
     for (int k{0}; k < 10; k++)
     {
+
+        for (int i{0}; i < nb_colors; i++)
+        {
+            moy[i] = glm::vec3{0.f};
+            count[i] = 0.f;
+        };
         // pour chaque pixel de l'image :
         for (int x{0}; x < image.width(); x++)
         {
@@ -47,13 +53,10 @@ void kmeans(sil::Image image)
                     }
                 };
 
-                // plus proche couleur dans le tableau  grace à l'indice trouvé dans le for précédent
-                glm::vec3 pp_color{px_centro[i_color]};
-
                 // j'ajoute 1 à la couleur de pixel moyen
                 count[i_color] += 1.f;
 
-                moy[i_color] += pp_color;
+                moy[i_color] += image.pixel(x,y);
                 // kmeans.pixel(x, y) = vec3_count;
             }
         }
@@ -65,12 +68,6 @@ void kmeans(sil::Image image)
         };
 
         px_centro = moy;
-
-        for (int i{0}; i < nb_colors; i++)
-        {
-            moy[i] = glm::vec3{0.f};
-            count[i] = 0.f;
-        };
     }
 
     for (int x{0}; x < image.width(); x++)

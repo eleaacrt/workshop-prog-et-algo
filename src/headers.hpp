@@ -31,3 +31,6 @@ void split(sil::Image image);
 void swap(sil::Image image);
 void tri(sil::Image image);
 void vortex(sil::Image image);
+void kuwahara(sil::Image image);
+
+
