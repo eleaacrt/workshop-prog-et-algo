@@ -5,7 +5,7 @@ void convolution(sil::Image image)
 {
     sil::Image convolution(image.width(), image.height());
 
-    int kernel{50};
+    int kernel{3};
 
     for (int x{0}; x < image.width(); x++)
     {

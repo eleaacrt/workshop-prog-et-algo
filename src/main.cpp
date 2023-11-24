@@ -23,7 +23,7 @@ int main()
     // glitch(logo);
     // gradient();
     // green(logo);
-    kmeans(photo);
+    // kmeans(photo);
     // kuwahara(photo);
     // luminosite(photo);
     // mirror(logo);
@@ -35,15 +35,10 @@ int main()
     // rosace();
     // rotate(logo);
     // sharpen(logo);
-<<<<<<< HEAD
     // split(logo);
     // swap(logo);
     // tri(logo);
     // vortex(logo);
-=======
-    // gaussiens(photo);
-    // diff_gaussien(flou_faible, flou_fort);
-    tri(logo);
+    // tri(logo);
     // kuwahara(photo);
->>>>>>> 1546238bd3d78118620ce0adf60f731879eb4845
 }
