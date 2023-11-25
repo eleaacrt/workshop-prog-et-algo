@@ -65,6 +65,14 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "codecvt": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "utility": "cpp",
+        "numbers": "cpp"
     }
 }
