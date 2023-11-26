@@ -46,7 +46,7 @@ Nous avons utilisé le même procédé que pour les filtres précédents mais no
 ## Dégradé (⭐️)
 | _AVANT_                           | ✨ _APRÈS_ ✨                |
 | --------------------------------- | -------------------------- |
-| ![](./output/black_rectangle.png) | ![](./output/gradient.png) |
+| ![](./images/black_rectangle.png) | ![](./output/gradient.png) |
 
 
 Nous avons rencontré un peu plus de difficultés en réalisant ce dégradé. En effet, nous savions que la couleur de chaque pixel dépendait de sa position x. 
@@ -98,8 +98,8 @@ image.pixel(random_int(0, image.width()), random_int(0, image.height())) = rando
 ---
 
 ## Rotation à 90° (⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨              |
+| ---------------------- | ------------------------ |
 | ![](./images/logo.png) | ![](./output/rotate.png) |
 
 Lors de la création de la rotation, nous avions compris qu'il fallait déplacer les pixels. Cependant, nous n'avions pas pensé à créer une nouvelle image. Les pixels ne pouvant pas se placer dans "rien", nous avons eu une erreur que nous avons mis du temps à comprendre. 
@@ -117,7 +117,7 @@ sil::Image image2{image.height() /*width*/, image.width() /*height*/};
 | ---------------------- | ----------------------- |
 | ![](./images/logo.png) | ![](./output/split.png) |
 
-Pour le filtre RGB Split, nous avons utilisé une valeur décalage pour interagir sur les pixels de l'image. Nous avons aussi pensé que le décalage allait faire sortir la range de notre boucle for des dimensions de l'image, donc grâce à des if, nous nous sommes occupé des cas particuliers.
+Pour le filtre RGB Split, nous avons utilisé une valeur décalage pour interagir sur les pixels de l'image. Nous avons aussi pensé que le décalage allait faire sortir la range de notre boucle for des dimensions de l'image, donc grâce à des if, nous nous sommes occupés des cas particuliers.
 
 
 ``` c++
@@ -127,8 +127,8 @@ if ((x + decalage) >= image.width())
 ---
 
 ## Luminosité (⭐️⭐️)
-| _AVANT_                | ✨ _Luminosité basse_ ✨             | ✨ _Luminosité haute_ ✨             |
-| ---------------------- | ----------------------- | ----------------------- |
+| _AVANT_                 | ✨ _Luminosité basse_ ✨      | ✨ _Luminosité haute_ ✨      |
+| ----------------------- | --------------------------- | --------------------------- |
 | ![](./images/photo.jpg) | ![](./output/lum_basse.png) | ![](./output/lum_haute.png) |
 
 Pour le filtre Luminosité, nous avons pensé à faire les deux cas (luminosité haute et basse) dans le même algorithme. 
@@ -143,9 +143,9 @@ pow((image.pixel(x, y).r), 0.5)
 ---
 
 ## Disque (⭐️⭐️)
-| _AVANT_                           | ✨ _APRÈS_ ✨                |
-| --------------------------------- | -------------------------- |
-| ![](./output/black_rectangle.png) | ![](./output/disque.png) |
+| _AVANT_                        | ✨ _APRÈS_ ✨              |
+| ------------------------------ | ------------------------ |
+| ![](./images/small_square.png) | ![](./output/disque.png) |
 
 Pour le disque, pas de grande difficulté rencontrée. Grâce à un if, nous avons simplement appliqué la formule mathématique d'une équation de cercle à nos variables :
 
@@ -158,9 +158,9 @@ Ainsi, si notre pixel respecte la condition, c'est-à-dire s'il se trouve dans l
 ---
 
 ## Cercle (⭐️)
-| _AVANT_                           | ✨ _APRÈS_ ✨                |
-| --------------------------------- | -------------------------- |
-| ![](./output/black_rectangle.png) | ![](./output/cercle.png) |
+| _AVANT_                        | ✨ _APRÈS_ ✨              |
+| ------------------------------ | ------------------------ |
+| ![](./images/small_square.png) | ![](./output/cercle.png) |
 
 Pour le cercle, nous avons simplement rajouté une condition d'épaisseur pour trier les pixels à colorer : 
 
@@ -173,9 +173,9 @@ if (pow((x - (cercle.width() / 2)), 2) + pow((y - (cercle.height() / 2)), 2) <= 
 ---
 
 ## Rosace (⭐️⭐️⭐️)
-| _AVANT_                           | ✨ _APRÈS_ ✨                |
-| --------------------------------- | -------------------------- |
-| ![](./output/black_rectangle.png) | ![](./output/rosace.png) |
+| _AVANT_                        | ✨ _APRÈS_ ✨              |
+| ------------------------------ | ------------------------ |
+| ![](./images/small_square.png) | ![](./output/rosace.png) |
 
 Pour la rosace, nous savions déjà comment faire afficher un cercle. Nous n'avions plus qu'à savoir comment les manipuler pour les afficher à des endroits précis, notament les points cardinaux d'un cercle. Nous avons donc utilisé la formule pour passer des coordonées polaires aux coordonnées cartésiennes. On a donc créé un cercle au centre de l'image, puis grâce à une boucle for, créé un nouveau cercle tous les PI/3 sur le cercle.
 ``` C++
@@ -198,8 +198,8 @@ alors on met le pixel en blanc :
 ---
 
 ## Mosaïque (⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨                |
+| ---------------------- | -------------------------- |
 | ![](./images/logo.png) | ![](./output/mosaique.png) |
 
 Pour le filtre Mosaïque, nous avons créé une nouvelle image de 5 fois la largeur et la hauteur de celle que nous voulions transformer en mosaïque. Puisn grâce à l'opérateur modulo (%) nous avons rempli la nouvelle image 25 fois avec celle de base.
@@ -212,8 +212,8 @@ mosaique.pixel(x, y) = image.pixel(x % image.width(), y % image.height());
 ---
 
 ## Mosaïque Miroir (⭐️⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨                         |
+| ---------------------- | ----------------------------------- |
 | ![](./images/logo.png) | ![](./output/mosaique_inverted.png) |
 
 Pour le filtre Mosaïque Miroir, un peu plus de difficulté. Majoritairement les mêmes procédés que pour la mosaïque sauf qu'il a fallu créer un paterne avec chacune des versions (normale/miroir/inversée/miroir inversée), puis remplir l'image avec ce nouveau paterne.
@@ -243,8 +243,8 @@ mosaique.pixel(x, y) = patern.pixel(x % patern.width(), y % patern.height());
 ---
 
 ## Glitch (⭐️⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨              |
+| ---------------------- | ------------------------ |
 | ![](./images/logo.png) | ![](./output/glitch.png) |
 
 Pour le filtre Glitch, on crée deux rectangles de mêmes dimensions mais aléatoires, on leur attribue une position aléatoir sur l'image et on les remplit des pixels à cet emplacement de l'image. Puis on inverse ces rectangles et on les insère dans l'image de base.
@@ -252,9 +252,9 @@ Pour le filtre Glitch, on crée deux rectangles de mêmes dimensions mais aléat
 ---
 
 ## Fractale de Mandelbrot (⭐️⭐️⭐️)
-| _AVANT_                           | ✨ _APRÈS_ ✨                |
-| --------------------------------- | -------------------------- |
-| ![](./output/black_rectangle.png) | ![](./output/fractale.png) |
+| _AVANT_                        | ✨ _APRÈS_ ✨                |
+| ------------------------------ | -------------------------- |
+| ![](./images/small_square.png) | ![](./output/fractale.png) |
 
 Pour la fractale de Mandelbrot, nous avons manipulé les complexes. Grâce à une condition sur :
 ``` C++
@@ -265,8 +265,8 @@ On a pu jouer avec la luminosité des pixels avec une boucle while et un compteu
 ---
 
 ## Vortex (⭐️⭐️⭐️(⭐️))
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨              |
+| ---------------------- | ------------------------ |
 | ![](./images/logo.png) | ![](./output/vortex.png) |
 
 Pour le filtre Vortex, on a pu travailler avec des vecteurs pour la position des pixels. On appliquait une fonction de rotation sur ce vecteur afin d'en récuperer un nouveau (une position finale), et après avoir rajouté une condition if pour ne pas traiter les pixels qui sortiraient de l'image, nous sommes arrivés au résultat.
@@ -276,8 +276,8 @@ Pour le filtre Vortex, on a pu travailler avec des vecteurs pour la position des
 ---
 
 ## Tramage (⭐️⭐️⭐️(⭐️))
-| _AVANT_                | ✨ _APRÈS_ ✨|
-| ---------------------- | ----------------------- |
+| _AVANT_                 | ✨ _APRÈS_ ✨                 |
+| ----------------------- | --------------------------- |
 | ![](./images/photo.jpg) | ![](./output/dithering.png) |
 
 Pour le filtre Dithering (ou Tramage), on a utilisé la matrice de Bayer :
@@ -294,9 +294,9 @@ On a ensuite calculé une valeur de bayer pour chaque pixel pour ensuite l'ajout
 ---
 
 ## Normalisation de l'histogramme (⭐️⭐️⭐️(⭐️))
-| _AVANT_                | ✨ _APRÈS_ ✨|
-| ---------------------- | ----------------------- |
-| ![](./images/photo.jpg) | ![](./output/normalisation.png) |
+| _AVANT_                                  | ✨ _APRÈS_ ✨                     |
+| ---------------------------------------- | ------------------------------- |
+| ![](./images/photo_faible_contraste.jpg) | ![](./output/normalisation.png) |
 
 Pour le filtre Normalisation, on a cherché le pixel le plus sombre et le plus clair de l'image. Puis pour chaque pixel de l'image, on a calculé son rapport avec la moyenne entre le pixel le plus sombre et le plus clair. Et finalement, chaque pixel a pris sa couleur normalisée (en fonction de son rapport au pixel moyen) :
 
@@ -317,8 +317,8 @@ Pour le filtre Normalisation, on a cherché le pixel le plus sombre et le plus c
 ---
 
 ## Convolutions (⭐️⭐️⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨                   |
+| ---------------------- | ----------------------------- |
 | ![](./images/logo.png) | ![](./output/convolution.png) |
 
 Pour le filtre Convolution, on a découvert et manipulé les Kernel. On parcourt l'image pixel par pixel ainsi que les 8 autres qui l'entourent (sauf si on sort de l'image). On prend ensuite la couleur moyenne de l'ensemble de ces pixels (9 sauf si l'on s'est débarassé de ceux hors de l'image), et on la réapplique au pixel central.
@@ -327,7 +327,7 @@ Pour le filtre Convolution, on a découvert et manipulé les Kernel. On parcourt
 
 ## Netteté, Contours, etc (⭐️)
 | _AVANT_                | ✨ _Emboss_ ✨             | ✨ _Outline_ ✨             | ✨ _Sharpen_ ✨             |
-| ---------------------- | ----------------------- |----------------------- |----------------------- |
+| ---------------------- | ------------------------ | ------------------------- | ------------------------- |
 | ![](./images/logo.png) | ![](./output/emboss.png) | ![](./output/outline.png) | ![](./output/sharpen.png) |
 
 Pour le prochain exercice, nous avons réappliqué le concept de convolutions avec différents Kernel. Voici par exemple le kernel pour le filtre Emboss :
@@ -340,8 +340,8 @@ float kernel[][kernel_n] = {
 ---
 
 ## Différence de gaussiennes (⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨|
-| ---------------------- | ----------------------- |
+| _AVANT_                 | ✨ _APRÈS_ ✨                |
+| ----------------------- | -------------------------- |
 | ![](./images/photo.jpg) | ![](./output/gaussien.png) |
 
 Pour le filtre Différence de gaussiennes, nous sommes d'abord passé par deux fonctions floutant l'image de base à deux intensités différentes. (gaussiens.cpp) Puis, en rajoutant une nouvelle variable Tau et en mutipliant ces effets par 1 + Tau pour le flou léger et par Tau pour le flou fort et en faisant leur différence, on obtient l'effet voulu.
@@ -352,8 +352,8 @@ inal.pixel(x, y) = (1 + tau) * gaussien_leger.pixel(x, y) - tau * gaussien_hard.
 ---
 
 ## Tri de pixels (⭐️⭐️⭐️⭐️)
-| _AVANT_                | ✨ _APRÈS_ ✨             |
-| ---------------------- | ----------------------- |
+| _AVANT_                | ✨ _APRÈS_ ✨           |
+| ---------------------- | --------------------- |
 | ![](./images/logo.png) | ![](./output/tri.png) |
 
 Pour le filtre Tri de pixels, nous avons créé des images rectangles (d'une largeur de 1px et d'une longueur de 50px), que nous avons attribué a différents endroits de l'image aléatoirement, tout en leur attribuant les pixels de l'image correspondants. Nous avons ensuite trié chacun des pixels de ce rectangle en fonction de leur luminosité puis avons ensuite inséré ce rectangle dans l'image finale. Voici le code peremettant de faire le tri ainsi que la fonction permettant de calculer la luminosité d'un pixel :
@@ -375,4 +375,66 @@ for (int x{0}; x < rect.width(); x++)
             }
         }
 ```
+---
+
+## Filtre de Kuwahara (⭐️⭐️⭐️⭐️⭐️)
+
+| _AVANT_                 | ✨ _APRÈS_ ✨                |
+| ----------------------- | -------------------------- |
+| ![](./images/photo.jpg) | ![](./output/kuwahara.png) |
+
+Le fitre de Kuwahara s'obtient en implémentant un algorithme similaire à celui de la convolution (filtre blur)
+
+Nous avons créé 4 sections égales autour de notre pixel. Nous avons ensuite défini la moyenne de la couleur de chacune de ces sections. On calcule ensuite l'écart type des différentes sections. On applique à notre pixel, la moyenne de couleur de la section avec l'écart type le plus faible.
+
+---
+
+## K-means (⭐️⭐️⭐️⭐️⭐️)
+
+| _AVANT_                 | ✨ _2 couleurs_ ✨          | ✨ _3 couleurs_ ✨          | ✨ _16 couleurs_ ✨          |
+| ----------------------- | ------------------------- | ------------------------- | -------------------------- |
+| ![](./images/photo.jpg) | ![](./output/kmeans2.png) | ![](./output/kmeans3.png) | ![](./output/kmeans16.png) |
+
+L'algorithme de K-Means sert à trouver quelle sont les N (à définir, ici 2, 3 et 16) couleurs dominantes de la photo et les appliquer aux pixels les plus proches de ces couleurs.
+
+Pour ce faire, on choisit N pixels aléatoires sur notre image originelle qu'on ajoute dans un tableau (vecteur). On doit ensuite parcourir les pixels de notre image et les ajouter au pixel de référence (ou centroïde) dont la valeur est la plus proche de celle de notre pixel. On fait ensuite une moyenne de toutes ces valeurs et nous obtenons ainsi de nouveaux pixels centroïdes. 
+
+On répète ensuite l'opération un certain nombre de fois (ici 10 est suffisant) pour obtenir les N couleurs les plus présentes dans notre image.
+
+---
+
+## Diamond Square (⭐️⭐️⭐️⭐️⭐️⭐️)
+
+| _AVANT_                  | ✨ _APRÈS_ ✨                      |
+| ------------------------ | -------------------------------- |
+| ![](./images/square.png) | ![](./output/diamond_square.png) |
+
+Pour réaliser l'algorithme du diamond square, on crée un carré de largeur 2^N + 1. On choisit une valeur aléatoire de couleur pour les 4 coins de ce carré. On va ensuite faire leur moyenne et y ajouter une valeur aléatoire entre -0.5 et 0.5. On applique cette nouvelle valeur à notre pixel central. C'est ce qu'on appelle le __square step__. 
+
+Pour effectuer ensuite le __diamond step__, on prend le milieu entre deux coins du carré et on fait la moyenne entre les 4 coins du diamand (ou seulement 3 lors de la première étape notamment). On y ajoute également une valeur aléatoire comme pour le square step.
+
+En répétant cet algorithme pour l'entièreté des pixels de l'image, on obtient une sorte de nuages qui peut correspondre à une carte. 
+
+---
+
+## Coloriser la Height Map (⭐️⭐️)
+
+| _AVANT_                          | ✨ _APRÈS_ ✨                              |
+| -------------------------------- | ---------------------------------------- |
+| ![](./output/diamond_square.png) | ![](./output/diamond_square_colored.png) |
+
+Pour coloriser la height map, on parcourt les pixels de notre image généré grâce à l'algorithme du diamond square. Si la valeur de notre pixel est suppérieure à 0.75, alors on la modifie en une nuance de blanc / noir en fonction de son intensité. 
+
+``` c++
+if (moy > 0.75f)
+{
+    // Nuances de noir arrondies au centième
+    float intensity = 1.0 - (moy - 0.75) * 4.f;
+    diamond_square_colored.pixel(x, y).r = std::floor(intensity * 10.0) / 10.0;
+    diamond_square_colored.pixel(x, y).g = std::floor(intensity * 10.0) / 10.0;
+    diamond_square_colored.pixel(x, y).b = std::floor(intensity * 10.0) / 10.0;
+};
+```
+On fait de même avec les autres valeurs, si c'est compris entre 0.5 et 0.75, alors la couleur sera une nuance de brun. Si c'est une valeur entre 0.25 et 0.5, alors c'est une nuance de vert. Enfin, si la valeur est inférieure à 0.25, alors c'est une nuance de bleu.
+
 ---

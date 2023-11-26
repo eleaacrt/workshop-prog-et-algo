@@ -15,7 +15,7 @@ int main()
     // cercle();
     // convolution(logo);
     // diff_gaussien(flou_faible, flou_fort);
-    diamond_square_patoutafait();
+    // diamond_square_patoutafait();
     diamond_square();
     // disque();
     // dithering(photo);

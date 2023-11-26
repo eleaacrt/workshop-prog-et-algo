@@ -9,7 +9,7 @@ void kmeans(sil::Image image)
     sil::Image kmeans(image.width(), image.height());
 
     // c'est le nombre de couleurs que je veux à la fin
-    int nb_colors{16};
+    int nb_colors{2};
 
     // les pixels centroides qui serviront de première reférence
     std::vector<glm::vec3> px_centro{};
@@ -96,5 +96,5 @@ void kmeans(sil::Image image)
         }
     }
 
-    kmeans.save("output/kmeans.png");
+    kmeans.save("output/kmeans2.png");
 }

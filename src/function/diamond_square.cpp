@@ -5,7 +5,7 @@
 
 void diamond_square()
 {
-    int height_map_size = 257;
+    int height_map_size = 1025;
 
     sil::Image diamond_square(height_map_size, height_map_size);
 
@@ -75,7 +75,7 @@ void diamond_square()
 
     diamond_square.save("output/diamond_square.png");
 
-    // ---------------------------------------------
+    // -------- colorisation de la map -------------------------------------
 
     sil::Image diamond_square_colored{"output/diamond_square.png"};
 
@@ -85,16 +85,39 @@ void diamond_square()
         {
             float moy = (diamond_square_colored.pixel(x, y).r + diamond_square_colored.pixel(x, y).g + diamond_square_colored.pixel(x, y).b) / 3.f;
 
-            if (moy < 0.5)
+            if (moy > 0.75f)
             {
+                // Nuances de noir arrondies au centième
+                float intensity = 1.0 - (moy - 0.75) * 4.f;
+                diamond_square_colored.pixel(x, y).r = std::floor(intensity * 10.0) / 10.0;
+                diamond_square_colored.pixel(x, y).g = std::floor(intensity * 10.0) / 10.0;
+                diamond_square_colored.pixel(x, y).b = std::floor(intensity * 10.0) / 10.0;
+            }
+            else if (moy > 0.5f && moy <= 0.75f)
+            {
+                // Nuances de brun arrondies au centième
+                float intensity = (moy - 0.5) * 4.f;
+                diamond_square_colored.pixel(x, y).r = std::floor((0.7 * intensity) * 10.0) / 10.0;
+                diamond_square_colored.pixel(x, y).g = std::floor((0.4 * intensity) * 10.0) / 10.0;
+                diamond_square_colored.pixel(x, y).b = std::floor((0.2 * intensity) * 10.0) / 10.0;
+            }
+            else if (moy > 0.25f && moy <= 0.5f)
+            {
+                // Nuances de vert arrondies au centième
+                float intensity = (moy - 0.25) * 4.f;
+                diamond_square_colored.pixel(x, y) = {0.0, 1.0 * intensity, 0.0};
                 diamond_square_colored.pixel(x, y).r = 0.f;
+                diamond_square_colored.pixel(x, y).g = std::floor((1.0 * intensity) * 10.0) / 10.0;
                 diamond_square_colored.pixel(x, y).b = 0.f;
             }
             else
             {
+                // Nuances de bleu arrondies au centième
+                float intensity = moy * 4.f;
+                diamond_square_colored.pixel(x, y) = {0.0, 1.0 * intensity, 0.0};
                 diamond_square_colored.pixel(x, y).r = 0.f;
                 diamond_square_colored.pixel(x, y).g = 0.f;
-                diamond_square_colored.pixel(x, y).b = 1 - diamond_square_colored.pixel(x, y).b;
+                diamond_square_colored.pixel(x, y).b = std::floor((1.0 * intensity) * 10.0) / 10.0;
             }
         }
     }
