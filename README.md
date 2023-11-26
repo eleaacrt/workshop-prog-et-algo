@@ -4,6 +4,26 @@
 > Pour ce projet, nous avons décidé de réaliser les exercices dans l'ordre de la consigne afin de parcourir les difficultés dans l'ordre croissant. Nous avons pu ainsi obtenir des bases solides pour avancer dans les exercices les plus complexes.
 
 ---
+## Table des matières
+| ⭐️                                                 | ⭐️⭐️                                                         | ⭐️⭐️⭐️                                                   |
+| ------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
+| [Ne garder que le vert](#ne-garder-que-le-vert-⭐️) | [Miroir](#miroir-⭐️⭐️)                                       | [Rosace](#rosace-⭐️⭐️⭐️)                                 |
+| [Échanger les canaux](#échanger-les-canaux-⭐️)     | [Image Bruitée](#image-bruitée-⭐️⭐️)                         | [Mosaïque Miroir](#mosaïque-miroir-⭐️⭐️⭐️)               |
+| [Noir & Blanc](#noir--blanc-⭐️)                    | [Rotation à 90°](#rotation-à-90°-⭐️⭐️)                       | [Glitch](#glitch-⭐️⭐️⭐️)                                 |
+| [Négatif](#négatif-⭐️)                             | [RGB Split](#rgb-split-⭐️⭐️)                                 | [Fractale de Mandelbrot](#fractale-de-mandelbrot-⭐️⭐️⭐️) |
+| [Dégradé](#dégradé-⭐️)                             | [Luminosité](#luminosité-⭐️⭐️)                               |
+| [Cercle](#cercle-⭐️)                               | [Disque](#disque-⭐️⭐️)                                       |
+| [Netteté, Contours, etc](#netteté-contours-etc-⭐️) | [Mosaïque](#mosaïque-⭐️⭐️)                                   |
+|                                                   | [Différence de Gaussiennes](#différence-de-gaussiennes-⭐️⭐️) |
+
+| ⭐️⭐️⭐️⭐️                                                                  | ⭐️⭐️⭐️⭐️⭐️                                           | ⭐️⭐️⭐️⭐️⭐️⭐️                                                 |
+| --------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| [Vortex](#vortex-⭐️⭐️⭐️⭐️)                                                | [Filtre de Kuwahara](#filtre-de-kuwahara-⭐️⭐️⭐️⭐️⭐️) | [Diamond Square](#diamond-square-⭐️⭐️⭐️⭐️⭐️⭐️)               |
+| [Tramage](#tramage-⭐️⭐️⭐️⭐️)                                              | [K-means](#k-means-⭐️⭐️⭐️⭐️⭐️)                       | [Coloriser la Height Map](#coloriser-la-height-map-⭐️⭐️) |
+| [Normalisation de l'histogramme](#normalisation-de-lhistogramme-⭐️⭐️⭐️⭐️) |
+| [Convolutions](#convolutions-⭐️⭐️⭐️⭐️)                                    |
+| [Tri de pixels](#tri-de-pixels-⭐️⭐️⭐️⭐️)                                  |
+---
 
 ## Ne garder que le vert (⭐️)
 | _AVANT_                | ✨ _APRÈS_ ✨             |
