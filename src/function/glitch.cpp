@@ -22,6 +22,7 @@ void glitch(sil::Image image)
         {
             for (int y{0}; y < rect.height(); y++)
             {
+                // Pas besoin de créer des images intermédiaires rect et rect2. Juste utiliser std::swap marche tout aussi bien et est plus économe en mémoire.
                 rect.pixel(x, y) = image.pixel((x + imageXrect1), (y + imageYrect1));
                 rect2.pixel(x, y) = image.pixel((x + imageXrect2), (y + imageYrect2));
 

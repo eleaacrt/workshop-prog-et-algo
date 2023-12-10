@@ -9,8 +9,11 @@ void diamond_square()
 
     sil::Image diamond_square(height_map_size, height_map_size);
 
-    diamond_square.pixel(0, 0) = {0.7f, 0.7f, 0.7f};
-    diamond_square.pixel(0, diamond_square.height() - 1) = {0.4f, 0.4f, 0.4f};
+    // Si vous vouliez avoir la même valeur random dans les trois canaux de la couleur, il fallait faire une variable pour stocker le random, puis passer cette variable trois fois à la couleur:
+    float const grey{random_float(0.f, 1.f)};
+    diamond_square.pixel(0, 0) = {grey, grey, grey};
+    // ou alors, utiliser la syntaxe glm qui permet de construire une couleur à partir d'un seul nombre, et qui met ce nombre dans les trois canaux:
+    diamond_square.pixel(0, diamond_square.height() - 1) = {random_float(0.f, 1.f)};
     diamond_square.pixel(diamond_square.width() - 1, 0) = {0.2f, 0.2f, 0.2f};
     diamond_square.pixel(diamond_square.width() - 1, diamond_square.height() - 1) = {0.1f, 0.1f, 0.1f};
 

@@ -1,6 +1,8 @@
 #include <sil/sil.hpp>
 #include <iostream>
 
+// Petit point terminologie : ceci n'est pas un gaussian blur, mais un box blur. Le gaussian blur a des coefficients qui dépendent d'une exponentielle décroissante (cf wikipedia)
+// Ceci dit un box blur marchait très bien aussi pour l'exo, c'est juste que c'est trompeur de l'appeler gaussien alors que ce n'est pas un gaussien ^^
 void gaussiens(sil::Image image)
 {
     sil::Image gaussien_leger(image.width(), image.height());
@@ -37,6 +39,7 @@ void gaussiens(sil::Image image)
 
     kernel = 10;
 
+    // Plutôt que de refaire le même code qu'au dessus, vous auriez pu mettre le code dans une fonction que vous auriez appelée deux fois, en lui passant un paramètre kernel différent à chaque fois.
     for (int x{0}; x < image.width(); x++)
     {
         for (int y{0}; y < image.height(); y++)

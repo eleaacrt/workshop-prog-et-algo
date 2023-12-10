@@ -7,8 +7,8 @@ void normalisation(sil::Image image)
     // création des images
     sil::Image normalisation{image.width() /*width*/, image.height() /*height*/};
 
-    float min{0.5f};
-    float max{0.5f};
+    float min{0.5f}; // Pourquoi init le min à 0.5 ? Pourquoi pas 1 ? Voir FLT_MAX (le plus grand nombre possible) ? Si tous les pixels ont une luminosité entre 0.6 et 1, votre code est bugué.
+    float max{0.5f}; // Idem, vous pourriez l'init à -FLT_MAX (ou 0 ça marche bien aussi dans ce cas particulier où on sait que la luminosité sera toujours >= 0)
 
     for (int y = 0; y < normalisation.height(); y++)
     {
@@ -62,6 +62,6 @@ void normalisation(sil::Image image)
         }
     }
 
-    std::cout << min << " ; " << max << std::endl;
+    std::cout << min << " ; " << max << std::endl; // Pensez à enlever votre code de debug au moment de rendre le projet (voire au moment de faire votre commit, une fois que le code est débugué)
     normalisation.save("output/normalisation.png");
 }

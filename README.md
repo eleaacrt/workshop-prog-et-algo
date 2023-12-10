@@ -84,6 +84,8 @@ for (float x{0.f}; x < image.width(); x++)
 
 La division par des int nous donnant toujours des valeurs proches de 0 qui se convertissaient donc automatiquement en 0 ne nous donnaient que des pixels noirs et une ligne blanche.
 
+<!-- C'est en effet une manière de résoudre le problème, mais elle présente un petit problème : les calculs sur les floats présentant des imprécisions, il se pourrait (si la boucle avait beaucoup + d'itérations) que les erreurs s'accumulent et dépassent 1, ce qui vous ferait skipper un pixel. La manière de faire qu'on préfère en général est plutôt de faire la boucle sur des int, et de les static_cast en float au besoin (i.e. au moment de faire la division) -->
+
 ---
 
 ## Miroir (⭐️⭐️)
@@ -95,6 +97,7 @@ La division par des int nous donnant toujours des valeurs proches de 0 qui se co
 Pour ce filtre, nous avons simplement créé une inversion entre la première moitié des pixels et la dernière moitié. 
 
 Nous avons pris le premier pixel (x, y), que nous avons stocké dans une variable. Nous avons ensuite appliqué la couleur du dernier pixel (image.width(), image.height()) à notre premier pixel. Pour finir, nous avons associé la couleur du premier pixel stocké dans la variable, au dernier pixel. 
+<!-- Oui. Vous auriez aussi pu utiliser la fonction swap comme vous l'avez fait dans l'exo d'échange des canaux. -->
 
 Nous avons répété ensuite cette opération sur les pixels suivants, le pixel(x+1, y+1) et le pixel (image.width()-1, image.height()-1)
 
@@ -237,7 +240,15 @@ mosaique.pixel(x, y) = image.pixel(x % image.width(), y % image.height());
 | ![](./images/logo.png) | ![](./output/mosaique_inverted.png) |
 
 Pour le filtre Mosaïque Miroir, un peu plus de difficulté. Majoritairement les mêmes procédés que pour la mosaïque sauf qu'il a fallu créer un paterne avec chacune des versions (normale/miroir/inversée/miroir inversée), puis remplir l'image avec ce nouveau paterne.
-
+<!-- Une approche alternative est de toujours lire dans l'image originale, mais avec un x et un y qui ont potentiellement était inversés pour faire le mirroir. Ainsi on ne fait pas 4 if, mais seulement 2 :
+```cpp
+if(x > image.width())
+    x = mirror(x);
+if(y > image.height())
+    y = mirror(y);
+patern.pixel(x, y) = image.pixel(x % image.width(), y % image.height());
+```
+ -->
 ``` c++
 Remplissage du paterne avec les différentes versions du logo de base :
 if (x > image.width() && y > image.height())
@@ -388,6 +399,8 @@ for (int x{0}; x < rect.width(); x++)
             for (int y{0}; y < rect.height(); y++)
             {
                 pixels.push_back(rect.pixel(x, y));
+                /// ATTENTION TRES TRES GRAVE:
+                /// Vous triez le tableau à chaque itération de la boucle !!!!! Vous auriez pu ne le trier qu'une seule fois à la fin, après les boucles. Ca aurait MONSTRUEUSEMENT accéléré votre algorithme ^^
                 std::sort(pixels.begin(), pixels.end(), [](glm::vec3 const &color1, glm::vec3 const &color2)
                           {
                               return brightness(color1) < brightness(color2); // Trie selon la luminosité des couleurs (NB : c'est à vous de coder la fonction `brightness`)
@@ -429,7 +442,7 @@ On répète ensuite l'opération un certain nombre de fois (ici 10 est suffisant
 | ------------------------ | -------------------------------- |
 | ![](./images/square.png) | ![](./output/diamond_square.png) |
 
-Pour réaliser l'algorithme du diamond square, on crée un carré de largeur 2^N + 1. On choisit une valeur aléatoire de couleur pour les 4 coins de ce carré. On va ensuite faire leur moyenne et y ajouter une valeur aléatoire entre -0.5 et 0.5. On applique cette nouvelle valeur à notre pixel central. C'est ce qu'on appelle le __square step__. 
+Pour réaliser l'algorithme du diamond square, on crée un carré de largeur $2^N + 1$ <!-- Vous pouvez utiliser la syntaxe LaTeX entre $ pour formatter les formules de math -->. On choisit une valeur aléatoire de couleur pour les 4 coins de ce carré. On va ensuite faire leur moyenne et y ajouter une valeur aléatoire entre -0.5 et 0.5. On applique cette nouvelle valeur à notre pixel central. C'est ce qu'on appelle le __square step__. 
 
 Pour effectuer ensuite le __diamond step__, on prend le milieu entre deux coins du carré et on fait la moyenne entre les 4 coins du diamand (ou seulement 3 lors de la première étape notamment). On y ajoute également une valeur aléatoire comme pour le square step.
 

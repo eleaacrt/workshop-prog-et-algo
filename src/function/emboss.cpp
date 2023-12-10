@@ -6,6 +6,7 @@ void emboss(sil::Image image)
     sil::Image emboss(image.width(), image.height());
 
     const int kernel_n{3};
+    // Plutôt que de copier-coller le code qui calcule la convolution entre les différents effets, vous auriez pu faire une fonction `convolution` une fois pour toute, qui prend un kernel en paramètre.
     float kernel[][kernel_n] = {
         {-2, -1, 0},
         {-1, 1, 1},

@@ -3,10 +3,10 @@
 
 void mosaique(sil::Image image)
 {
+    int nb_patern{5}; // C'est très bien de faire une variable pour stocker ce paramètre, mais vous ne l'utilisez pas ^^
 
-    sil::Image mosaique{image.width() * 5 /*width*/, image.height() * 5 /*height*/};
+    sil::Image mosaique{image.width() * nb_patern /*width*/, image.height() * nb_patern /*height*/};
 
-    int nb_patern{5};
 
     for (int x{0}; x < mosaique.width(); x++)
     {

@@ -34,18 +34,28 @@ void tri(sil::Image image)
             for (int y{0}; y < rect.height(); y++)
             {
                 pixels.push_back(rect.pixel(x, y));
-                std::sort(pixels.begin(), pixels.end(), [](glm::vec3 const &color1, glm::vec3 const &color2)
-                          {
-                              return brightness(color1) < brightness(color2); // Trie selon la luminosité des couleurs (NB : c'est à vous de coder la fonction `brightness`)
-                          });
             }
         }
+        std::sort(pixels.begin(), pixels.end(), [](glm::vec3 const &color1, glm::vec3 const &color2)
+                    {
+                        return brightness(color1) < brightness(color2); // Trie selon la luminosité des couleurs (NB : c'est à vous de coder la fonction `brightness`)
+                    });
 
+        int i{0};
         for (int x{0}; x < rect.width(); x++)
         {
             for (int y{0}; y < rect.height(); y++)
             {
-                rect.pixel(x, y) = pixels[x];
+                rect.pixel(x, y) = pixels[i]; // Bug: le tableau pixels contient rect.width() * rect.height() éléments, mais vous ne lisez que les rect.width() premiers, et ignorez tous les autres. Dans le cas où height > 1 il faudrait adapter le code pour qu'il marche bien. Par exemple avec le compteur i que j'ai rajouté.
+                i++;
+            }
+        }
+        // Ou version + opti :
+        for (int x{0}; x < rect.width(); x++)
+        {
+            for (int y{0}; y < rect.height(); y++)
+            {
+                rect.pixel(x, y) = pixels[y + x * image.height()];
             }
         }
 
