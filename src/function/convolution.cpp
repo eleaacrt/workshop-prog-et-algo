@@ -5,7 +5,7 @@ void convolution(sil::Image image)
 {
     sil::Image convolution(image.width(), image.height());
 
-    int kernel{3};
+    int kernel{3}; // Cette variable devrait être nommée kernel_size, pas kernel. Quand je lis `kernel` je m'attend à avoir le tableau contenant toutes les valeurs.
 
     for (int x{0}; x < image.width(); x++)
     {

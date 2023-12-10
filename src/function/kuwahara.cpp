@@ -19,12 +19,12 @@ void kuwahara(sil::Image image)
             glm::vec3 moy_sect3{};
             glm::vec3 moy_sect4{};
 
-            float et_sect1{};
+            float et_sect1{}; // Evitez les abbréviations dans les noms de variable, ça rend la lecture difficile parce qu'on doit diviner ce que veut dire `et`
             float et_sect2{};
             float et_sect3{};
             float et_sect4{};
 
-            // secteur 1 :
+            // secteur 1 : // On aurait probablement pu faire une boucle plutôt que de faire quasi le même code pour les 4 secteurs 
             float count_sect1{0.f};
             glm::vec3 sum_sect1{0.f, 0.f, 0.f};
 
@@ -226,21 +226,21 @@ void kuwahara(sil::Image image)
             // ------------------------------------------------------
 
             std::vector<float> all_et{et_sect1, et_sect2, et_sect3, et_sect4};
-            std::sort(all_et.begin(), all_et.end());
+            float const min = std::min_element(all_et.begin(), all_et.end()); // Plutôt que de trier l'entièreté du tableau, vous pouvez utilise std::min_element pour trouver qui est le plus petit. C'est + performant.
 
-            if (all_et[0] == et_sect1)
+            if (min == et_sect1)
             {
                 kuwahara.pixel(x, y) = moy_sect1;
             }
-            if (all_et[0] == et_sect2)
+            if (min == et_sect2)
             {
                 kuwahara.pixel(x, y) = moy_sect2;
             }
-            if (all_et[0] == et_sect3)
+            if (min == et_sect3)
             {
                 kuwahara.pixel(x, y) = moy_sect3;
             }
-            if (all_et[0] == et_sect4)
+            if (min == et_sect4)
             {
                 kuwahara.pixel(x, y) = moy_sect4;
             }

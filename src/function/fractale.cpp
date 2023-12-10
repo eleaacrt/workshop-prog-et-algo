@@ -33,9 +33,9 @@ void fractale()
                 count++;
             }
 
-            fractale.pixel(x, y).r = 0.f + count / 50;
-            fractale.pixel(x, y).g = 0.f + count / 50;
-            fractale.pixel(x, y).b = 0.f + count / 50;
+            fractale.pixel(x, y).r = 0.f + static_cast<float>(count) / 50.f; // On préférera que count soit un int (pour éviter les erreurs de précisions sur les floats quand on fait des count++ à répétition) Puis cast en float ici.
+            fractale.pixel(x, y).g = 0.f + static_cast<float>(count) / 50.f;
+            fractale.pixel(x, y).b = 0.f + static_cast<float>(count) / 50.f;
         }
     }
 

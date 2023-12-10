@@ -1,7 +1,8 @@
 #include <sil/sil.hpp>
 #include <iostream>
 
-void diff_gaussien(sil::Image gaussien_leger, sil::Image gaussien_hard)
+// Passer par const& vous évite de copier les images (et une image c'est gros donc on n'a pas envie de la copier)
+void diff_gaussien(sil::Image const& gaussien_leger, sil::Image const& gaussien_hard)
 {
     sil::Image final(gaussien_leger.width(), gaussien_leger.height());
 

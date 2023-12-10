@@ -14,8 +14,11 @@ void cercle()
     {
         for (int y{0}; y < cercle.height(); y++)
         {
-            if (pow((x - (cercle.width() / 2)), 2) + pow((y - (cercle.height() / 2)), 2) <= (r * r) and 
-            pow((x - (cercle.width() / 2)), 2) + pow((y - (cercle.height() / 2)), 2) >= ((r - thinkeness) * (r - thinkeness))
+            // Vous calculez deux fois `pow((x - (cercle.width() / 2)), 2) + pow((y - (cercle.height() / 2)), 2)`
+            // Vous auriez pu le mettre dans une variable pour le réutiliser :
+            auto const distance_squared{ pow((x - (cercle.width() / 2)), 2) + pow((y - (cercle.height() / 2)), 2) };
+            if (distance_squared <= (r * r) and 
+            distance_squared >= ((r - thinkeness) * (r - thinkeness))
             )
             {
                 cercle.pixel(x, y).r = 0.45f;

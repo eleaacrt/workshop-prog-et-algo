@@ -64,7 +64,7 @@ void kmeans(sil::Image image)
         for (int i{0}; i < nb_colors; i++)
         {
             // glm::vec3 vec3_count{count[i], count[i], count[i]};
-            moy[i] = moy[i] / count[i];
+            moy[i] /= count[i];
         };
 
         px_centro = moy;
